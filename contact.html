@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" href="./courses-logo-icon-brand-identity-sign-symbol-template-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="./bootstrarp/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrarp/style.css">
+    <style>
+        .contact-card {
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            font-size: 22px;
+            margin-right: 10px;
+            color: #0d6efd;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar p-4">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="./index.html">Course Orgnaizar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarID">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link " href="./index.html">Home</a>
+                        <a class="nav-link" href="./courses.html">My Courses</a>
+                        <a class="nav-link" href="./add-course.html">Add Courses</a>
+                        <a class="nav-link active" href="./contact.html">Contact Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+    <main class="container mt-5">
+
+        <h2 class="text-center mb-4">Contact Us</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-5">
+                <div class="card p-4 shadow contact-card">
+
+                    <h4 class="mb-3">Get in touch</h4>
+
+                    <p><i class="fa-solid fa-envelope icon-box"></i> example@email.com</p>
+                    <p><i class="fa-solid fa-phone icon-box"></i> 01000000000</p>
+                    <p><i class="fa-solid fa-location-dot icon-box"></i> Cairo, Egypt</p>
+
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="card p-4 shadow contact-card">
+
+                    <form id="contactForm">
+
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Your Name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Enter Your Email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Enter Your Message"
+                                required></textarea>
+                        </div>
+
+                        <button class="btn btn-primary w-100" type="submit">Send Message
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="toast position-fixed bottom-0 end-0 m-3" id="toast">
+        <div class="toast-body bg-success text-white">
+            Message Sent Successfully ✅
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let toast = new bootstrap.Toast(document.getElementById('toast'));
+            toast.show();
+
+            this.reset();
+        });
+    </script>
+
+
+    <script src="./bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

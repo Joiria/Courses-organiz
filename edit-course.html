@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Course</title>
+    <link rel="icon" href="./courses-logo-icon-brand-identity-sign-symbol-template-vector.jpg" type="image/png">
+    <link rel="stylesheet" href="./bootstrarp/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrarp/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark custom-navbar p-4">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="./index.html">Course Orgnaizar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarID">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarID">
+                    <div class="navbar-nav ms-auto">
+                        <a class="nav-link " href="./index.html">Home</a>
+                        <a class="nav-link" href="./courses.html">My Courses</a>
+                        <a class="nav-link" href="./add-course.html">Add Courses</a>
+                        <a class="nav-link " href="./contact.html">Contact Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="container mt-5">
+
+        <form id="editForm" class="bg-light p-4 rounded shadow">
+
+            <input type="hidden" id="index">
+
+            <div class="mb-3">
+                <label>Course Name</label>
+                <input type="text" id="name" class="form-control" placeholder="Add The Course Name>
+            </div>
+
+            <div class="mb-3">
+                <label>Instructor</label>
+                <input type="text" id="instructor" class="form-control" placeholder="Enter The instructor Name">
+            </div>
+
+            <div class="mb-3">
+                <label>Hours</label>
+                <input type="number" id="hours" class="form-control" placeholder="Add Hours">
+            </div>
+
+            <div class="mb-3">
+                <label>Notes</label>
+                <textarea id="notes" class="form-control" placeholder="Add Your Notes"></textarea>
+            </div>
+
+            <button class="btn btn-success w-100" type="submit">Save Changes</button>
+
+        </form>
+
+    </main>
+
+    <script>
+
+        let params = new URLSearchParams(window.location.search);
+        let index = params.get("index");
+
+        let courses = JSON.parse(localStorage.getItem("courses")) || [];
+
+        let course = courses[index];
+
+        document.getElementById("name").value = course.name;
+        document.getElementById("instructor").value = course.instructor;
+        document.getElementById("hours").value = course.hours;
+        document.getElementById("notes").value = course.notes;
+
+        document.getElementById("editForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            courses[index] = {
+                name: document.getElementById("name").value,
+                instructor: document.getElementById("instructor").value,
+                hours: document.getElementById("hours").value,
+                notes: document.getElementById("notes").value
+            };
+
+            localStorage.setItem("courses", JSON.stringify(courses));
+
+            alert("Data Updated Successfully");
+
+            window.location.href = "courses.html";
+        });
+    </script>
+
+
+
+    <script src="./bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
